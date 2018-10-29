@@ -1,0 +1,132 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block page %}
+            <div class="row">
+                <div class="col-md-6">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <div class="panel-actions">
+                                <a href="#" class="fa fa-caret-down"></a>
+                                <a href="#" class="fa fa-times"></a>
+                            </div>
+
+                            <h2 class="panel-title">Forage Resources for Bombus Rufocinctus</h2>
+                            <p class="panel-subtitle">(Bee, Bumble Bee, Red-belted Bumble Bee)</p>
+                        </header>
+                        <div class="panel-body">
+
+                            <!-- Flot: Basic -->
+                            <canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+                            <script>
+                                Chart.defaults.global.defaultFontColor = 'black';
+
+                                new Chart(document.getElementById("bar-chart-horizontal"), {
+                                    type: 'horizontalBar',
+                                    data: {
+                                        labels: ["Dalea purpurea", "Amorpha canescens", "Spiraea alba", "Bromus inermis", "Symphoricarpos occidentalis", "Lactuca tatarica"],
+                                        datasets: [
+                                            {
+                                                label: "Interactions",
+                                                backgroundColor: ["#3e95cd", "#3e95cd","#3e95cd","#3e95cd","#3e95cd","#3e95cd"],
+                                                scaleStepWidth: 1,
+                                                data: [2,2,1,1,1,1,0]
+                                            }
+                                        ]
+                                    },
+                                    options: {
+
+                                        title: {
+                                            display: true,
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-6">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            <div class="panel-actions">
+                                <a href="#" class="fa fa-caret-down"></a>
+                                <a href="#" class="fa fa-times"></a>
+                            </div>
+                            <h2 class="panel-title">Species</h2>
+                            <!--<p class="panel-subtitle">It's easy to create custom graphs on JSOFT Admin Template, there are several graph types that you can use, such as lines, bars, pie charts, etc...</p>-->
+                        </header>
+                        <div class="panel-body">
+
+                            <!-- Flot: Curves -->
+                            <canvas id="myChart" width="400" height="400"></canvas>
+                        <script>
+                            var ctx = document.getElementById("myChart").getContext('2d');
+                            var myChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: ["Hymenoptera ", "Apidae ", "Bombus "],
+                                    datasets: [{
+                                        label: "Insects",
+                                        data: [15001, 12986, 9171],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+                                            'rgba(255, 206, 86, 0.2)',
+                                            'rgba(75, 192, 192, 0.2)',
+                                            'rgba(153, 102, 255, 0.2)',
+                                            'rgba(255, 159, 64, 0.2)'
+                                        ],
+                                        borderColor: [
+                                            'rgba(255,99,132,1)',
+                                            'rgba(54, 162, 235, 1)',
+                                            'rgba(255, 206, 86, 1)',
+                                            'rgba(75, 192, 192, 1)',
+                                            'rgba(153, 102, 255, 1)',
+                                            'rgba(255, 159, 64, 1)'
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+                        </script>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-xl-6 col-lg-12">
+                    <section class="panel">
+                        <header class="panel-heading panel-heading-transparent">
+                            <div class="panel-actions">
+                                <a href="#" class="fa fa-caret-down"></a>
+                                <a href="#" class="fa fa-times"></a>
+                            </div>
+
+                            <h2 class="panel-title">Map</h2>
+                        </header>
+                        <div class="panel-body">
+                            {% load leaflet_tags %}
+                            <head>
+                                {% leaflet_js %}
+                                {% leaflet_css %}
+                            </head>
+                            <body>
+
+                                {% leaflet_map "yourmap" %}
+
+                            </body>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+{% endblock %}

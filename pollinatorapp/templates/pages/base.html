@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+<!--{% block script %}{% endblock %}-->
+
+{% block sidebar %}
+
+        <!-- start: sidebar -->
+        <aside id="sidebar-left" class="sidebar-left">
+
+            <div class="sidebar-header">
+                <div class="sidebar-title">
+                    Navigation
+                </div>
+                <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+                    <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+                </div>
+            </div>
+
+            <div class="nano">
+                <div class="nano-content">
+                    <nav id="menu" class="nav-main" role="navigation">
+                        <ul class="nav nav-main">
+                            <li class="nav-active">
+                                <a href="/">
+                                    <!--<i class="fa fa-home" aria-hidden="true"></i>-->
+                                    <span>Northern Praire Wildlife Research Center</span>
+                                </a>
+                            </li>
+                            <li class="nav-parent">
+                                <a>
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span>Analysis Package</span>
+                                    <canvas id="pie-chart" width="800" height="450"></canvas>
+                                    <script>
+                                        new Chart(document.getElementById("pie-chart"), {
+                                            type: 'pie',
+                                            data: {
+                                                labels: ["Federal Land", "State Land", "Private ","Private Land"],
+                                                datasets: [{
+                                                    label: "Acres",
+                                                    backgroundColor: ["#75AE2C", "#F18500","#00A1A9","#00A1A9"],
+                                                    borderColor:"FFFFFF",
+                                                    data: [2478,5267,734,656]
+                                                }]
+                                            },
+                                            options: {
+                                                legend: {
+                                                    labels: {
+                                                        fontColor: "white",
+                                                    },
+                                                },
+                                                title: {
+                                                    display: true,
+
+                                                }
+                                            }
+                                        });
+                                    </script>
+                                </a>
+
+                                <ul class="nav nav-children">
+                                    <li>
+                                        <a href="/maps-google-maps.html">
+                                            Basic
+                                        </a>
+                                    </li>
+                                    <!--<li>-->
+                                        <!--<a href="maps-google-maps-builder.html">-->
+                                            <!--Map Builder-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                    <!--<li>-->
+                                        <!--<a href="maps-vector.html">-->
+                                            <!--Vector-->
+                                        <!--</a>-->
+                                    <!--</li>-->
+                                </ul>
+                            </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+        </aside>
+
+    <!-- end: sidebar -->
+{% endblock %}

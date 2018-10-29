@@ -1,0 +1,5 @@
+__pycache__/
+db.postgresql
+db.sqlite3
+*pyc
+env/git a
